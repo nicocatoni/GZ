@@ -1,0 +1,2 @@
+class Growshop < ApplicationRecord
+end
