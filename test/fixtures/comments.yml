@@ -1,0 +1,13 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  content: MyText
+  user: one
+  like: false
+  growshop: one
+
+two:
+  content: MyText
+  user: two
+  like: false
+  growshop: two

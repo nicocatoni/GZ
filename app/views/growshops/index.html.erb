@@ -2,15 +2,15 @@
 <div>
 
   <div id="carouselExampleFade" class="carousel slide carousel-fade" data-ride="carousel">
-    <div class="carousel-inner">
-        <div class="carousel-item active">
-                <%= image_tag "fondopagina.jpg", class: "d-block w-100" %>  
+    <div class="carousel-inner carouselitem ">
+        <div class="carousel-item active itemimg ">
+                <%= image_tag "img4.jpg", class: "d-block w-100" %>  
         </div>
          <div class="carousel-item">
-               <%= image_tag "fondopagina2.jpg", class: "d-block w-100" %>
+               <%= image_tag "img2.jpg", class: "d-block w-100" %>
           </div>
             <div class="carousel-item">
-                 <%= image_tag "fondopagina3.jpg", class: "d-block w-100" %>
+                 <%= image_tag "img3.jpg", class: "d-block w-100" %>
             </div>
   </div>
             <a class="carousel-control-prev" href="#carouselExampleFade" role="button" data-slide="prev">
@@ -33,37 +33,38 @@
     <p class="lead text-success">Un Sitio desarrolado para ti.</p>
   </div>
 </div>
+
 <div class="container">
-<h1>Growshops</h1>
+<div class="row">
+<h1 class=" text-success ">Growshops</h1>
+</div>
+<div class="row py-4 ">
+<% @growshops.each do |growshop| %>
+<div class="card py-4 col-lg-3 col-md-4 col-xs-6 margincard" style="width: 18rem;">
+    <div class="card-body ">
+        
+      <h5 class="card-title text-success"><%= growshop.name %></h5>
+      <h6 class="card-subtitle mb-2 text-muted"><%= growshop.description %></h6>
+        <p class="card-text"><%= growshop.location %></p>
+        <a href="" class="card-link"><%= link_to 'Show', growshop %></a>
+        <a href="" class="card-link"><%= link_to 'Edit', edit_growshop_path(growshop) %></a>
+        <a href="" class="card-link"><%= link_to 'Destroy', growshop, method: :delete, data: { confirm: 'Are you sure?' } %></a>
+        
+    </div>
+</div>
+<% end %>
 
-<table>
-  <thead>
-    <tr>
-      <th>Name</th>
-      <th>Description</th>
-      <th>Location</th>
-      <th colspan="3"></th>
-    </tr>
-  </thead>
-
-  <tbody>
-    <% @growshops.each do |growshop| %>
-      <tr>
-        <td><%= growshop.name %></td>
-        <td><%= growshop.description %></td>
-        <td><%= growshop.location %></td>
-        <td><%= link_to 'Show', growshop %></td>
-        <td><%= link_to 'Edit', edit_growshop_path(growshop) %></td>
-        <td><%= link_to 'Destroy', growshop, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
+    
 
 <br>
-
-<%= link_to 'New Growshop', new_growshop_path %>
 </div>
+</div>
+
+<div class="text-center py-4 textoverde">
+  <h3><%= link_to 'New Growshop', new_growshop_path %></h3>
+</div>
+
+
 <br>
 <br>
 
@@ -96,3 +97,4 @@
         
 
 </footer>
+
