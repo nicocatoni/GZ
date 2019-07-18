@@ -15,6 +15,11 @@ class GrowshopsController < ApplicationController
       marker.lat grow.latitude
       marker.lng grow.longitude
       marker.infowindow grow.name
+      marker.picture({
+        :url => "/hojasss.png",
+        :width   => 36,
+        :height  => 36
+       })
        
     end
 
