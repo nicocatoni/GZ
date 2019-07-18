@@ -1,16 +1,31 @@
 class GrowshopsController < ApplicationController
-  before_action :set_growshop, only: [:show, :edit, :update, :destroy]
-  before_action :authenticate_user!, only: [:edit, :update, :destroy, :create]
+  before_action :set_growshop, only: [:show, :edit, :update]
+  before_action :authenticate_user!, only: [:edit, :update,  :create]
 
   # GET /growshops
   # GET /growshops.json
   def index
-    @growshops = Growshop.all
+        
+    @growshops = Growshop.near(
+      current_user.address,
+      100,
+      units: :km
+    )
+    @hash = Gmaps4rails.build_markers(@growshops) do |grow, marker|
+      marker.lat grow.latitude
+      marker.lng grow.longitude
+      marker.infowindow grow.name
+       
+    end
+
   end
 
   # GET /growshops/1
   # GET /growshops/1.json
   def show
+    @growshop = Growshop.find(params[:id])
+    
+    
   end
 
   # GET /growshops/new
@@ -22,10 +37,16 @@ class GrowshopsController < ApplicationController
   def edit
   end
 
+
+  def findaddress
+    @address = Geocoder.address([params[:latitude], params[:longitude]])
+  end
+
   # POST /growshops
   # POST /growshops.json
   def create
     @growshop = Growshop.new(growshop_params)
+    @growshop.user = current_user
 
     respond_to do |format|
       if @growshop.save
@@ -70,6 +91,6 @@ class GrowshopsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def growshop_params
-      params.require(:growshop).permit(:name, :description, :location)
+      params.require(:growshop).permit(:name, :description, :address, :longitude, :latitude)
     end
 end

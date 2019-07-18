@@ -1,0 +1,49 @@
+
+
+<%#= link_to 'Edit', edit_comment_path(@comment) %> |
+<%#= link_to 'Back', growshop_comment_path %>
+
+<div class="text-center">
+	<p id="notice"><%= notice %></p>
+
+
+
+	<p><strong>Publicado por:</strong> <%= @comment.user.username %></p>
+
+	<div class="jumbotron">
+		<p>
+	  <%= @comment.content %>
+	</p>
+	</div>
+</div>
+
+<div class="row">
+	<div class="col-md-4">
+		<div class="well well-sm">
+			<legend>Comentar:</legend>
+			<%= form_with(model: [@growshop, Comment.new], local: true, html: { class: 'form-horizontal' }) do |f| %>
+				<div class="form-group">
+					<div class="col-md-12">
+						<%= f.text_area :content, placeholder: 'Escribe tu comentario aquí...', class: 'form-control' %>
+					</div>
+				</div>
+				<%= f.submit 'Comentar', class: 'btn btn-primary' %>
+			<% end %>
+			  
+		</div>
+	</div>
+	<div class="col-md-8">
+		<% counter = 0 %>
+		<% @comments.each do |comment| %>
+			#<%= counter += 1 %>
+			<div class="well well-sm">
+				<strong><%= comment.user.username %>:</strong>
+				<br>
+				<%= comment.content %>
+				<div class="text-right">
+					<%= link_to 'Eliminar', growshop_comment_path(@growshop,comment), method: :delete, data: { confirm: 'Estás seguro que deseas eliminar el Comentario?' }, class: 'btn btn-xs btn-danger' %>
+				</div>
+			</div>
+		<% end %>
+	</div>
+</div>

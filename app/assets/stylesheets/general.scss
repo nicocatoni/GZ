@@ -4,20 +4,29 @@ Da margen a las card
 .margincard{
     margin: 10px;
     
+    
+}
+
+.borders {
+
+    border: 0px;
+
 }
 /*
 tamaño imagen carrousel
 */
-.carouselitem {
-    height: 340px;
+.carousel-item {
+    height: 380px;
 }
 
 .itemimg {
-    position: fixed;
-    top: 0;
-    left: 0;
-    min-height: 200px;
-}
+    width: auto;
+
+    height: 200px;
+    
+    max-height: 380px;
+    
+    }
 .textoverde {
     color: forestgreen;
 }
@@ -27,14 +36,3 @@ navbarr acordeon
 
 
 */
-
-
-.accordion.accordion-3 {
- border-radius: 3px; }
-.accordion.accordion-3 p {
- font-size: 1rem; }
-.accordion.accordion-3 .fa.fa-angle-down {
- margin-top: -10px; }
-.accordion .animated-icon1 span {
- background: #F44336;
-            }

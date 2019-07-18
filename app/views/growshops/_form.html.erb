@@ -11,22 +11,61 @@
     </div>
   <% end %>
 
-  <div class="field">
+  <div class="field text-success">
     <%= form.label :name %>
     <%= form.text_field :name %>
   </div>
 
-  <div class="field">
+  <div class="field text-success">
     <%= form.label :description %>
     <%= form.text_area :description %>
   </div>
-
-  <div class="field">
-    <%= form.label :location %>
-    <%= form.text_field :location %>
+ <div class="form-group text-success">
+   <%= form.label :address %>
+    <div class="row">
+      <div class="col-md-3">
+        <%= form.text_field :address, class: 'form-control'%>
+      </div>
+        <div class="col-md-4">
+          <%= link_to "#",  class:"btn btn-success", id: "get_location" do %>
+            <i class="fa fa-map-marker"> </i>
+          <% end %>
+        </div>
   </div>
+ </div>
+  <br>
 
   <div class="actions">
     <%= form.submit %>
   </div>
 <% end %>
+
+
+<script> 
+$("#get_location").on('click', function(event){
+ event.preventDefault();
+ $(this).html('<i class="fa fa-spinner fa-spin"> </i>')
+  if (navigator.geolocation) {
+   navigator.geolocation.getCurrentPosition(getAddress);
+ } else {
+    $('body').append("Geolocation is not supported by this browser.");
+ }
+}); 
+
+function getAddress(position) {
+  var latitude = position.coords.latitude;
+  var longitude = position.coords.longitude;
+  $.ajax({
+  url: '/geocoder/findaddress',
+  type: 'GET',
+  dataType: 'script',
+  data: {latitude: latitude, longitude: longitude}
+ })
+  .done(function(data){
+})
+  .always(function(data){
+    $("#get_location").html('<i class="fafa-map-marker"> </i>');
+ })
+};   
+
+</script>
