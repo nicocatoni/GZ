@@ -1,6 +1,6 @@
 class GrowshopsController < ApplicationController
-  before_action :set_growshop, only: [:show, :edit, :update]
-  before_action :authenticate_user!, only: [:edit, :update,  :create]
+  before_action :set_growshop, only: [:show, :edit, :update, :destroy]
+  before_action :authenticate_user!
 
   # GET /growshops
   # GET /growshops.json
@@ -16,7 +16,7 @@ class GrowshopsController < ApplicationController
       marker.lng grow.longitude
       marker.infowindow grow.name
       marker.picture({
-        :url => "/hojasss.png",
+        :url => "/trebol.png",
         :width   => 36,
         :height  => 36
        })
