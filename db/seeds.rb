@@ -21,7 +21,6 @@ Growshop.destroy_all
        address: addresses,
        password: '123456'
    )
-   sleep 1
 end
 
 
