@@ -9,8 +9,12 @@ addresses = "Av Libertador Bernardo O'Higgins, Santiago, Región Metropolitana,
 Cerro Sta. Lucia, Santiago, Región Metropolitana,
 Curicó 200-58, Santiago, Región Metropolitana,
 Sta Isabel 176, Santiago, Región Metropolitana,
-Barrio Italia, Ñuñoa, Región Metropolitana"
-
+Barrio Italia, Ñuñoa, Región Metropolitana,
+Conferencia 1100-1062, Santiago, Región Metropolitana,
+Juan Sabaj 121, Ñuñoa, Región Metropolitana,
+Álvarez de Toledo 316, San Joaquín, Región Metropolitana,
+Gran Avenida Jose Miguel Carrera 5110, San Miguel, Región Metropolitana"
+AdminUser.destroy_all
 User.destroy_all
 Growshop.destroy_all
 
